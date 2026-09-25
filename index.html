@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Account Verification</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -200,7 +200,6 @@
             flex-shrink: 0;
         }
 
-        /* Social stack */
         .social-stack-btn {
             display: inline-flex; align-items: center; gap: 6px;
             background: rgba(0,0,0,0.28);
@@ -455,7 +454,6 @@
             flex-shrink: 0;
         }
 
-        /* ============ STEP HEAD ============ */
         .step-head { text-align: center; margin-bottom: 22px; }
 
         .step-icon {
@@ -616,82 +614,148 @@
         }
         .field-error.show { display: flex; }
 
-        /* ============ PROFILE CARD (NEW) ============ */
+        /* ============================================================
+           NEW PROFILE CARD
+           ============================================================ */
         .profile-card {
             display: none;
-            margin-top: 16px;
-            padding: 14px;
-            background: linear-gradient(135deg,
-                rgba(59, 130, 246, 0.10),
-                rgba(99, 102, 241, 0.06));
-            border: 1px solid rgba(99, 102, 241, 0.30);
-            border-radius: 14px;
-            animation: profileReveal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
+            margin-top: 18px;
+            background: linear-gradient(180deg,
+                rgba(59,130,246,0.10) 0%,
+                rgba(99,102,241,0.03) 100%);
+            border: 1px solid rgba(99,102,241,0.30);
+            border-radius: 16px;
             overflow: hidden;
+            position: relative;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.03) inset,
+                0 12px 30px -14px rgba(59,130,246,0.5);
         }
 
-        .profile-card.show { display: block; }
-
-        .profile-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 15%; right: 15%;
-            height: 1px;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(59,130,246,0.7),
-                transparent);
+        .profile-card.show {
+            display: block;
+            animation: profileReveal 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         @keyframes profileReveal {
-            0%   { opacity: 0; transform: translateY(10px) scale(0.96); }
+            0%   { opacity: 0; transform: translateY(12px) scale(0.96); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .profile-inner {
-            display: flex;
-            align-items: center;
-            gap: 13px;
+        .profile-banner {
+            height: 56px;
+            background:
+                radial-gradient(circle at 20% 100%, rgba(59,130,246,0.5), transparent 70%),
+                radial-gradient(circle at 80% 0%, rgba(124,58,237,0.4), transparent 70%),
+                linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            position: relative;
+            padding: 10px 12px;
+            overflow: hidden;
         }
 
-        .profile-avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            object-fit: cover;
+        .profile-banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 14px 14px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .profile-banner-logo {
+            height: 20px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+
+        .verified-ribbon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: rgba(34,197,94,0.22);
+            border: 1px solid rgba(34,197,94,0.50);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #86efac;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1;
+            box-shadow: 0 0 12px rgba(34,197,94,0.4);
+        }
+        .verified-ribbon i { font-size: 8px; }
+
+        .profile-main {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            padding: 0 14px;
+            margin-top: -26px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-wrap {
+            position: relative;
+            width: 66px; height: 66px;
             flex-shrink: 0;
-            background: rgba(0,0,0,0.35);
-            border: 1px solid rgba(99,102,241,0.35);
-            box-shadow:
-                0 0 0 3px rgba(59,130,246,0.12),
-                0 4px 14px -4px rgba(0,0,0,0.5);
+        }
+
+        .avatar-wrap img.avatar {
+            width: 66px; height: 66px;
+            border-radius: 16px;
+            object-fit: cover;
+            background: #1e293b;
+            border: 3px solid #0b1220;
+            box-shadow: 0 6px 18px -4px rgba(0,0,0,0.6);
+            display: block;
+        }
+
+        .avatar-check {
+            position: absolute;
+            bottom: -3px; right: -3px;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 10px;
+            border: 2.5px solid #0b1220;
+            box-shadow: 0 0 14px rgba(34,197,94,0.75);
+            z-index: 3;
         }
 
         .profile-info {
             flex: 1;
             min-width: 0;
+            padding-top: 28px;
+            padding-bottom: 4px;
             text-align: left;
         }
 
         .profile-display-name {
             font-family: "Space Grotesk", sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            color: #ffffff;
+            font-size: 16px; font-weight: 700;
+            color: #fff;
             letter-spacing: -0.01em;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            display: flex; align-items: center; gap: 5px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
 
         .profile-display-name i {
-            font-size: 11px;
             color: var(--accent);
-            filter: drop-shadow(0 0 6px rgba(59,130,246,0.8));
+            font-size: 12px;
+            filter: drop-shadow(0 0 6px rgba(59,130,246,0.9));
             flex-shrink: 0;
         }
 
@@ -699,58 +763,108 @@
             font-size: 12.5px;
             color: var(--text-dim);
             margin-top: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            font-weight: 500;
         }
 
-        .profile-id-row {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 6px;
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding: 12px 14px 14px;
         }
 
-        .profile-id {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 10.5px;
-            font-weight: 600;
-            padding: 3px 9px;
-            border-radius: 999px;
-            background: rgba(34,197,94,0.12);
-            border: 1px solid rgba(34,197,94,0.28);
-            color: #86efac;
-            letter-spacing: 0.02em;
-            font-variant-numeric: tabular-nums;
+        .profile-stat {
+            background: rgba(0,0,0,0.32);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 9px 10px;
+            text-align: left;
+            min-width: 0;
         }
 
-        .profile-id i {
+        .profile-stat-label {
+            display: flex; align-items: center; gap: 4px;
             font-size: 9px;
-            color: #4ade80;
-        }
-
-        .profile-verified-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
+            font-weight: 800;
+            letter-spacing: 0.10em;
             text-transform: uppercase;
-            padding: 3px 9px;
-            border-radius: 999px;
-            background: rgba(59,130,246,0.14);
-            border: 1px solid rgba(59,130,246,0.32);
-            color: #93c5fd;
+            color: var(--text-mute);
+            margin-bottom: 3px;
+        }
+        .profile-stat-label i { font-size: 8px; color: var(--accent); opacity: 0.85; }
+
+        .profile-stat-value {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 13px; font-weight: 700;
+            color: #fff;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
 
-        .profile-verified-badge i {
-            font-size: 9px;
-            color: #60a5fa;
+        /* ============================================================
+           CONTINUE BUTTON
+           ============================================================ */
+        .btn-continue {
+            display: none;
+            position: relative;
+            width: 100%;
+            margin-top: 14px;
+            padding: 15px 20px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 15px; font-weight: 700;
+            letter-spacing: -0.005em;
+            color: #fff;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            align-items: center; justify-content: center;
+            gap: 9px;
+            overflow: hidden;
+            transition: transform 0.15s ease, box-shadow 0.25s ease,
+                        background-position 0.6s ease;
+            box-shadow:
+                0 1px 0 rgba(255,255,255,0.25) inset,
+                0 10px 30px -8px rgba(34,197,94,0.55),
+                0 4px 12px -4px rgba(22,163,74,0.4);
+            animation: continueAppear 0.5s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
         }
+
+        .btn-continue.show {
+            display: inline-flex;
+        }
+
+        @keyframes continueAppear {
+            0%   { opacity: 0; transform: translateY(10px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .btn-continue::before {
+            content: "";
+            position: absolute; inset: 0;
+            background: linear-gradient(105deg,
+                transparent 30%,
+                rgba(255,255,255,0.35) 50%,
+                transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.7s ease;
+        }
+
+        .btn-continue:hover {
+            transform: translateY(-1.5px);
+            background-position: 100% 100%;
+            box-shadow:
+                0 1px 0 rgba(255,255,255,0.3) inset,
+                0 14px 40px -8px rgba(34,197,94,0.75),
+                0 6px 18px -4px rgba(22,163,74,0.5);
+        }
+
+        .btn-continue:hover::before { transform: translateX(100%); }
+        .btn-continue:active { transform: translateY(0.5px) scale(0.995); }
+
+        .btn-continue i { font-size: 13px; }
 
         /* ============ AMOUNT GRID ============ */
         .amount-grid {
@@ -899,6 +1013,8 @@
             transform: translateY(-4px) scale(0.98);
             pointer-events: none;
         }
+
+        .btn-primary.hidden { display: none; }
 
         .btn-progress {
             position: absolute;
@@ -1258,7 +1374,28 @@
             filter: drop-shadow(0 0 6px rgba(251,191,36,0.55));
         }
 
-        /* ============ RESPONSIVE ============ */
+        /* ============================================================
+           RESPONSIVE — Mobile first
+           ============================================================ */
+
+        /* Small phones */
+        @media (max-width: 360px) {
+            .shell { max-width: 100%; }
+            .step { padding: 18px 14px; }
+            .step-title { font-size: 18px; }
+            .header { padding: 10px 10px; }
+            .brand-sub { display: none; }
+            .social-online-text { font-size: 10px; }
+            .social-stack-btn { padding: 4px 8px 4px 4px; }
+            .social-mini { width: 18px; height: 18px; font-size: 9px; border-radius: 5px; }
+            .sound-btn { width: 28px; height: 28px; font-size: 11px; }
+            .avatar-wrap, .avatar-wrap img.avatar { width: 58px; height: 58px; }
+            .avatar-wrap img.avatar { border-radius: 14px; }
+            .profile-display-name { font-size: 14px; }
+            .profile-stat-value { font-size: 12px; }
+        }
+
+        /* Standard phones */
         @media (max-width: 480px) {
             body { padding: 16px 12px; }
             .step { padding: 20px 18px; }
@@ -1288,9 +1425,14 @@
 
             .social-dropdown { width: 240px; right: -4px; }
 
-            .profile-avatar { width: 48px; height: 48px; border-radius: 12px; }
-            .profile-display-name { font-size: 14px; }
-            .profile-username { font-size: 11.5px; }
+            .profile-banner { height: 50px; }
+            .avatar-wrap, .avatar-wrap img.avatar { width: 60px; height: 60px; }
+            .avatar-wrap img.avatar { border-radius: 14px; border-width: 2.5px; }
+            .avatar-check { width: 20px; height: 20px; font-size: 9px; }
+            .profile-display-name { font-size: 15px; }
+            .profile-username { font-size: 12px; }
+            .profile-stat-label { font-size: 8.5px; }
+            .profile-stat-value { font-size: 12.5px; }
 
             .ios-stack { top: 12px; width: calc(100vw - 24px); }
             .ios-notif { border-radius: 20px; padding: 11px 12px; }
@@ -1298,6 +1440,71 @@
             .ios-avatar .avatar-img { border-radius: 10px; }
             .ios-avatar .flag-badge { width: 20px; height: 14px; bottom: -5px; right: -7px; }
             .ios-robux { width: 22px; height: 22px; }
+        }
+
+        /* ============================================================
+           DESKTOP — larger screens
+           ============================================================ */
+        @media (min-width: 768px) {
+            body { padding: 40px 24px; }
+            .shell { max-width: 500px; gap: 16px; }
+            .header { padding: 14px 18px; border-radius: 20px; }
+            .brand-logo-wrap { width: 44px; height: 44px; border-radius: 12px; }
+            .brand-logo-wrap img { height: 24px; }
+            .brand-title { font-size: 16px; }
+            .brand-sub { font-size: 10px; }
+
+            .social-stack-btn { height: 36px; padding: 6px 12px 6px 6px; gap: 8px; }
+            .social-mini { width: 24px; height: 24px; font-size: 12px; border-radius: 8px; }
+            .social-online-text { font-size: 12px; }
+            .sound-btn { width: 36px; height: 36px; font-size: 13px; border-radius: 11px; }
+
+            .card { border-radius: 26px; min-height: 480px; }
+            .step { padding: 28px 30px; }
+            .step-icon { width: 68px; height: 68px; border-radius: 20px; }
+            .step-icon i { font-size: 27px; }
+            .step-title { font-size: 26px; }
+            .step-desc { font-size: 14px; }
+
+            .progress-wrap { padding: 22px 30px 0; }
+
+            .field input { font-size: 16px; padding: 17px 18px 17px 3px; }
+            .field .at { font-size: 17px; padding-left: 18px; }
+
+            .amount { padding: 18px 8px 16px; }
+            .amount .val { font-size: 19px; }
+            .amount .unit { font-size: 10px; }
+
+            .btn-primary, .btn-continue, .btn-external {
+                padding: 17px 24px;
+                font-size: 16px;
+                border-radius: 15px;
+            }
+
+            .profile-banner { height: 64px; padding: 12px 14px; }
+            .profile-banner-logo { height: 24px; }
+            .verified-ribbon { top: 12px; right: 12px; padding: 4px 11px; font-size: 10px; }
+            .profile-main { padding: 0 18px; margin-top: -30px; gap: 14px; }
+            .avatar-wrap, .avatar-wrap img.avatar { width: 76px; height: 76px; }
+            .avatar-wrap img.avatar { border-radius: 18px; border-width: 3.5px; }
+            .avatar-check { width: 26px; height: 26px; font-size: 11px; }
+            .profile-info { padding-top: 32px; }
+            .profile-display-name { font-size: 18px; }
+            .profile-username { font-size: 13.5px; }
+            .profile-stats { padding: 14px 18px 18px; gap: 10px; }
+            .profile-stat { padding: 11px 12px; border-radius: 11px; }
+            .profile-stat-label { font-size: 10px; }
+            .profile-stat-value { font-size: 14.5px; }
+
+            .trust { padding: 16px 30px 20px; }
+            .trust span { font-size: 12px; }
+
+            .footer { font-size: 12px; }
+        }
+
+        /* Large desktop */
+        @media (min-width: 1200px) {
+            .shell { max-width: 520px; }
         }
     </style>
 </head>
@@ -1432,34 +1639,56 @@
                             <span>Username must be 3–20 characters (letters, numbers, underscore).</span>
                         </div>
 
-                        <!-- PROFILE CARD (يظهر بعد التحقق) -->
+                        <!-- PROFILE CARD (hidden until verified) -->
                         <div class="profile-card" id="profileCard">
-                            <div class="profile-inner">
-                                <img class="profile-avatar" id="profileAvatar" src="" alt="" />
+                            <div class="profile-banner">
+                                <img class="profile-banner-logo" src="https://i.postimg.cc/ZRXv8zcW/Roblox-Logo-2025.png" alt="Roblox" onerror="this.style.display='none'" />
+                                <span class="verified-ribbon">
+                                    <i class="fa-solid fa-shield-halved"></i> Verified
+                                </span>
+                            </div>
+
+                            <div class="profile-main">
+                                <div class="avatar-wrap">
+                                    <img class="avatar" id="profileAvatar" src="" alt="" />
+                                    <span class="avatar-check"><i class="fa-solid fa-check"></i></span>
+                                </div>
                                 <div class="profile-info">
                                     <div class="profile-display-name">
                                         <span id="profileDisplayName">—</span>
                                         <i class="fa-solid fa-circle-check"></i>
                                     </div>
                                     <div class="profile-username" id="profileUsername">@—</div>
-                                    <div class="profile-id-row">
-                                        <span class="profile-id">
-                                            <i class="fa-solid fa-hashtag"></i>
-                                            <span id="profileId">—</span>
-                                        </span>
-                                        <span class="profile-verified-badge">
-                                            <i class="fa-solid fa-shield-halved"></i>
-                                            Verified
-                                        </span>
-                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-stats">
+                                <div class="profile-stat">
+                                    <span class="profile-stat-label">
+                                        <i class="fa-solid fa-hashtag"></i> User ID
+                                    </span>
+                                    <span class="profile-stat-value" id="profileId">—</span>
+                                </div>
+                                <div class="profile-stat">
+                                    <span class="profile-stat-label">
+                                        <i class="fa-solid fa-calendar"></i> Joined
+                                    </span>
+                                    <span class="profile-stat-value" id="profileJoined">—</span>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- VERIFY BUTTON -->
                         <button class="btn-primary" id="verifyUserBtn">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <span id="verifyUserText">Verify Username</span>
                             <span class="btn-progress" id="userBtnProgress"></span>
+                        </button>
+
+                        <!-- CONTINUE BUTTON (appears after verification) -->
+                        <button class="btn-continue" id="continueBtn">
+                            <span>Continue</span>
+                            <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </section>
 
@@ -1664,6 +1893,17 @@
                 var ampm = h >= 12 ? "PM" : "AM";
                 h = h % 12; if (h === 0) h = 12;
                 return h + ":" + (m < 10 ? "0" + m : m) + " " + ampm;
+            }
+
+            function formatJoinedDate(iso) {
+                if (!iso) return "—";
+                try {
+                    var d = new Date(iso);
+                    var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+                    return months[d.getUTCMonth()] + " " + d.getUTCFullYear();
+                } catch (e) {
+                    return "—";
+                }
             }
 
             /* ============ SOUND ============ */
@@ -1905,7 +2145,7 @@
                 }
             }
 
-            /* ============ FORM LOGIC ============ */
+            /* ============ DOM ============ */
             var userField = document.getElementById("userField");
             var username = document.getElementById("username");
             var userError = document.getElementById("userError");
@@ -1913,6 +2153,7 @@
             var verifyUserBtn = document.getElementById("verifyUserBtn");
             var verifyUserText = document.getElementById("verifyUserText");
             var userBtnProgress = document.getElementById("userBtnProgress");
+            var continueBtn = document.getElementById("continueBtn");
             var backBtn = document.getElementById("backBtn");
             var verifySendBtn = document.getElementById("verifySendBtn");
             var verifySendText = document.getElementById("verifySendText");
@@ -1928,6 +2169,7 @@
             var profileDisplayName = document.getElementById("profileDisplayName");
             var profileUsername = document.getElementById("profileUsername");
             var profileId = document.getElementById("profileId");
+            var profileJoined = document.getElementById("profileJoined");
 
             var selected = null;
 
@@ -1954,16 +2196,21 @@
                 userField.classList.toggle("valid", res.ok);
                 userField.classList.remove("invalid");
                 userError.classList.remove("show");
-                profileCard.classList.remove("show");
             }
 
             username.addEventListener("input", updateUsernameUI);
             username.addEventListener("keydown", function (e) {
-                if (e.key === "Enter") verifyUserBtn.click();
+                if (e.key === "Enter") {
+                    if (!verifyUserBtn.classList.contains("hidden")) {
+                        verifyUserBtn.click();
+                    } else {
+                        continueBtn.click();
+                    }
+                }
             });
 
             /* ============================================================
-               STEP 1 → STEP 2 · REAL ROBLOX API VERIFICATION
+               STEP 1 · VERIFY
                ============================================================ */
             verifyUserBtn.addEventListener("click", function () {
                 var v = username.value.trim();
@@ -1986,13 +2233,14 @@
                     return;
                 }
 
-                /* Start loading */
+                /* Reset UI */
                 verifyUserBtn.disabled = true;
                 verifyUserBtn.querySelector("i").className = "fa-solid fa-spinner fa-spin";
-                userError.classList.remove("show");
+                verifyUserBtn.classList.remove("hidden");
+                continueBtn.classList.remove("show");
                 profileCard.classList.remove("show");
+                userError.classList.remove("show");
 
-                /* Animate progress bar quickly while waiting */
                 var progressValue = 0;
                 userBtnProgress.style.transition = "width 0.4s linear";
                 userBtnProgress.style.width = "0%";
@@ -2007,7 +2255,6 @@
 
                 verifyUserText.textContent = "Connecting to Roblox…";
 
-                /* Real API call to our Vercel proxy */
                 fetch("/api/roblox-lookup", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -2024,7 +2271,6 @@
                     userBtnProgress.style.width = "100%";
 
                     if (!result.ok) {
-                        /* Error: user not found or API failed */
                         var msg = "Could not find that username. Please check and try again.";
                         if (result.data && result.data.error === "User not found") {
                             msg = "That username does not exist on Roblox. Please check and try again.";
@@ -2044,7 +2290,7 @@
                         return;
                     }
 
-                    /* Success: show profile card */
+                    /* Success: populate profile */
                     var user = result.data;
 
                     profileAvatar.src = user.avatarUrl || FAKE_AVATAR;
@@ -2052,29 +2298,25 @@
                     profileDisplayName.textContent = user.displayName || user.name;
                     profileUsername.textContent = "@" + user.name;
                     profileId.textContent = user.id;
+                    profileJoined.textContent = formatJoinedDate(user.created);
 
+                    /* Show profile */
                     profileCard.classList.add("show");
 
+                    /* Change button state */
                     verifyUserBtn.querySelector("i").className = "fa-solid fa-circle-check";
                     verifyUserText.textContent = "Username Verified";
                     verifyUserBtn.classList.add("success");
-                    Sound.success();
 
-                    /* Move to step 2 */
+                    /* Hide verify button, show continue button after small delay */
                     setTimeout(function () {
-                        step2Desc.textContent = "Hi @" + user.name + " — choose an amount to add.";
-                        goToStep(2);
+                        verifyUserBtn.classList.add("hidden");
+                        continueBtn.classList.add("show");
+                        Sound.success();
+                    }, 700);
 
-                        /* Reset step 1 button state for potential return */
-                        setTimeout(function () {
-                            verifyUserBtn.disabled = false;
-                            verifyUserBtn.classList.remove("success");
-                            verifyUserBtn.querySelector("i").className = "fa-solid fa-magnifying-glass";
-                            verifyUserText.textContent = "Verify Username";
-                            userBtnProgress.style.transition = "none";
-                            userBtnProgress.style.width = "0%";
-                        }, 600);
-                    }, 1400);
+                    /* Store verified username for next step */
+                    verifyUserBtn.setAttribute("data-verified-name", user.name);
                 })
                 .catch(function (error) {
                     clearInterval(fakeProgressTimer);
@@ -2092,10 +2334,34 @@
                 });
             });
 
-            /* ============ BACK ============ */
+            /* ============================================================
+               CONTINUE → STEP 2
+               ============================================================ */
+            continueBtn.addEventListener("click", function () {
+                Sound.click();
+                var name = verifyUserBtn.getAttribute("data-verified-name") || username.value.trim();
+                step2Desc.textContent = "Hi @" + name + " — choose an amount to add.";
+                goToStep(2);
+            });
+
+            /* ============================================================
+               BACK → STEP 1
+               ============================================================ */
             backBtn.addEventListener("click", function () {
                 Sound.click();
                 goToStep(1);
+
+                /* Restore state */
+                if (profileCard.classList.contains("show")) {
+                    verifyUserBtn.classList.add("hidden");
+                    continueBtn.classList.add("show");
+                } else {
+                    verifyUserBtn.classList.remove("hidden");
+                    verifyUserBtn.disabled = false;
+                    verifyUserBtn.classList.remove("success");
+                    verifyUserBtn.querySelector("i").className = "fa-solid fa-magnifying-glass";
+                    verifyUserText.textContent = "Verify Username";
+                }
             });
 
             /* ============ AMOUNT SELECTION ============ */
