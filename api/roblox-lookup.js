@@ -4,16 +4,12 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-
+  if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { username } = req.body || {};
-
   if (!username || typeof username !== 'string') {
     return res.status(400).json({ error: 'Username is required' });
   }
@@ -44,7 +40,6 @@ export default async function handler(req, res) {
     }
 
     const userData = await userRes.json();
-
     if (!userData.data || userData.data.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -52,6 +47,7 @@ export default async function handler(req, res) {
     const user = userData.data[0];
     const userId = user.id;
 
+    // Avatar
     let avatarUrl = null;
     try {
       const avatarRes = await fetch(
@@ -61,15 +57,27 @@ export default async function handler(req, res) {
         const avatarData = await avatarRes.json();
         avatarUrl = avatarData?.data?.[0]?.imageUrl || null;
       }
-    } catch (e) {
-      // ignore
-    }
+    } catch (e) {}
+
+    // Account creation date
+    let created = null;
+    let description = null;
+    try {
+      const detailsRes = await fetch(`https://users.roblox.com/v1/users/${userId}`);
+      if (detailsRes.ok) {
+        const details = await detailsRes.json();
+        created = details.created || null;
+        description = details.description || null;
+      }
+    } catch (e) {}
 
     return res.status(200).json({
       id: userId,
       name: user.name,
       displayName: user.displayName || user.name,
-      avatarUrl: avatarUrl
+      avatarUrl: avatarUrl,
+      created: created,
+      description: description
     });
 
   } catch (error) {
